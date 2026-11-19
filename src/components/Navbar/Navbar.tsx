@@ -1,0 +1,72 @@
+import ImageLogo from '@assets/header/logo.svg';
+
+import TopNav from '@components/TopNav/TopNav';
+import SearchHeader from '@components/SearchHeader/SearchHeader';
+import DesktopLinks from '@components/DesktopLinks/DesktopLinks';
+import MobileLinks from '@components/MobileLinks/MobileLinks';
+import UserHeader from '@components/UserHeader/UserHeader';
+import ShoppingCart from '@components/ShoppingCart/ShoppingCart';
+import BiSupport from '@components/BiSupport/BiSupport';
+
+import Link from 'next/link';
+import AppImage from '../AppImage/AppImage';
+import Wishlist from '../Wishlist/Wishlist';
+
+function Navbar() {
+  return (
+    <>
+      <TopNav />
+      <header className="w-full h-[72px] text-sm text-gray-500 border-b border-[#F1F2F4] sticky top-0 z-50 bg-white">
+        <nav className="site-container h-full flex justify-between items-center gap-5">
+          <div className="flex items-center gap-5">
+            <Link
+              href="/"
+              className="block w-full cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out"
+            >
+              <AppImage
+                src={ImageLogo}
+                alt="Logo"
+                width={165}
+                height={32}
+                loading="eager"
+                className="object-contain"
+              />
+            </Link>
+            <div className="relative w-full mr-5 hidden md:block">
+              <SearchHeader
+                roundValue="rounded-full"
+                width="2xl:w-[550px] xl:w-[400px] lg:w-[340px] w-[350px]"
+                height="h-10"
+                placeholder="Search products, brands and more..."
+              />
+            </div>
+          </div>
+          <DesktopLinks />
+          <div className="flex items-center gap-4 ml-6.5">
+            <BiSupport
+              LinkClassName="items-center gap-2 hover:text-[#6AA64A] transition-colors duration-300 hidden xl:flex transform transition-transform duration-150 ease-in-out hover:scale-102"
+              iconClassName="w-10 h-10 rounded-full bg-[#F0FDF4] flex items-center justify-center"
+              size={20}
+              color="#16A34A"
+              strokeWidth={1.1}
+              textDivClassName="flex flex-col"
+              firstText="Support"
+              secondText={['24/7', 'Help']}
+              firstTextClassName="text-xs font-medium text-[#99A1AF]"
+              secondTextClassName="text-sm font-medium"
+            />
+            <div className="w-[2px] h-10 bg-[#E5E7EB] hidden xl:block" />
+            <div className="flex items-center gap-2">
+              <Wishlist />
+              <ShoppingCart />
+            </div>
+            <UserHeader />
+            <MobileLinks />
+          </div>
+        </nav>
+      </header>
+    </>
+  );
+}
+
+export default Navbar;
